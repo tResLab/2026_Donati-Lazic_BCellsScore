@@ -4,6 +4,15 @@ We defined the B-score, a surrogate of normal B-cell content surrounding tumor c
 
 This repository provides the computational pipeline to train the model, select the optimal hyperparameters, derived optimal coefficients and apply the derived score to individual patients in clinical practice.
 
+## Table of Contents
+
+- [Overview](#overview)
+- [Workflow & Pipeline](#workflow--pipeline)
+- [Repository structure](#repository-structure)
+- [Data availability](#data-availability)
+- [Requirements](#requirements)
+- [Citation](#citation)
+
 ## Overview
 
 This project implements a robust machine learning workflow (Elastic Net/Lasso) to derive a prognostic risk score starting from 18 B-cell related genes previously associated with PFS. These genes were obtained by a gene expression analysis conducted by means on nCounter PanCancer Immune Profiling Panel (Nanostring Technologies) on RNA extracted from diagnostic biopsies.
@@ -19,7 +28,7 @@ The mean (μ) and standard deviation (sd) used to scale data for each gene are c
 3. **Strict Cross-Validation Loop & Alpha Tuning**. 
 The CV folds are strictly fixed so that every α value evaluates exactly the same patients. The pipeline extracts the minimum deviance associated with each specific α to identify the optimal model.
 4. **Model generation and coefficients derivation**.
-Elastic Net Regression is run with α=1, selected by applying the “Elbow” method. Given a comparable Cross-Validation Error to α=0.05, this configuration is associated with a lower λ value (λ=0.16), which reduces the shrinkage bias on the non-zero coefficients while selecting only 8 predictive variables instead of the 13 identified at α = 0.05.
+Elastic Net Regression is run with α=0.1, selected by applying the “Elbow” method. Given a comparable Cross-Validation Error to α=0.05, this configuration is associated with a lower λ value (λ=0.16), which reduces the shrinkage bias on the non-zero coefficients while selecting only 8 predictive variables instead of the 13 identified at α = 0.05.
 5. **Score Computation**.
 The linear score for each patient is calculated by summing the weighted gene expression values (coefficients × scaled expression). Since this is a protective score, the final result is multiplied by `-1` so that a higher score correctly aligns with a protective clinical effect (better outcome/lower risk).
 
