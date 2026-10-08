@@ -82,6 +82,6 @@ The analyses were performed in R (>=4) using the following packages:
 
 If you use this code or the B-cell score in your research, please cite our paper:
 
-**"Donati B, Lazic T, Valli R et al., " Spatial transcriptomics identifies a B-cells–depleted profile defining underlying high-risk classic Hodgkin Lymphoma."**
+- **Donati B, Lazic T, Valli R et al., " Spatial transcriptomics identifies a B-cells–depleted profile defining underlying high-risk classic Hodgkin Lymphoma.**
 
 Full citation and DOI will be added upon publication.
